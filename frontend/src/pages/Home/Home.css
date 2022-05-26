@@ -1,0 +1,31 @@
+.home-title{
+  color: var(--main-color);
+  font-size: 40px;
+  margin-block-end: 0;
+  text-transform: uppercase;
+}
+
+.home-subtitle{
+  color: var(--second-color);
+  font-size: 16px;
+  padding: 0 30%;
+  text-align: center;
+}
+
+.home-banner{
+  max-width: 100%;
+}
+
+.home-container-search{
+  margin-top: 3em;
+  height: 40vh;
+  background-color: var(--second-color);
+}
+
+.home-container-search__header{
+  height: 70px;
+  transform: translateY(-1.8em);
+  box-shadow: 1px -8px 1px 1px var(--second-color-transparent);
+  background-color: var(--second-color);
+  border-radius: 50%;
+}
