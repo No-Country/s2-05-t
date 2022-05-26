@@ -24,8 +24,13 @@
 
 .home-container-search__header{
   height: 70px;
-  transform: translateY(-1.8em);
-  box-shadow: 1px -8px 1px 1px var(--second-color-transparent);
+  position: absolute;
+  width: 100%;
+  display: block;
+  transform: translate(0, -1.8em);
+  box-shadow: 
+    0px -6px 0px 0px var(--second-color-transparent), 
+    0px -6px 0px 0px var(--second-color-transparent);
   background-color: var(--second-color);
   border-radius: 50%;
 }

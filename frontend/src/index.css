@@ -1,10 +1,11 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto';
 }
 
 code {
@@ -15,5 +16,7 @@ code {
 :root{
   --main-color: #E6130D;
   --second-color: #10662E;
-  --second-color-transparent: #6CEA98; 
+  --second-color-light: #25E668;
+  --second-color-transparent: #6cea984a; 
+  --third-color: #FFD84D;
 }
