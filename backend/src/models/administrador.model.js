@@ -38,4 +38,7 @@ const schemaAdministrador = new mongoose.Schema(
   { timestamps: true }
 )
 
-const administradorModel = mongoose.model('Administrador', schemaAdministrador)
+export const administradorModel = mongoose.model(
+  'Administrador',
+  schemaAdministrador
+)

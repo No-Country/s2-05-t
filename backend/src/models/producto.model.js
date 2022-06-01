@@ -21,7 +21,7 @@ const schemaProducto = new mongoose.Schema(
     },
     tipo: {
       type: mongoose.Schema.Types.String,
-      enum: ['Plato', 'Bebida', 'Postre', 'Otro'],
+      enum: ['PLATO', 'BEBIDA', 'POSTRE', 'Otro'],
       default: 'Otro',
       required: true
     },

@@ -17,17 +17,12 @@ export class ClienteService {
   static async loginCliente (email, password) {
     try {
       const cliente = await clienteModel.findOne({ email })
-      if (!cliente) {
-        return {
-          message: 'El cliente no existe'
-        }
-      }
+      if (!cliente) throw new Error('El cliente no existe')
+
       const validPassword = bcrypt.compareSync(password, cliente.password)
-      if (!validPassword) {
-        return {
-          message: 'La contraseña no es correcta'
-        }
-      }
+
+      if (!validPassword) throw new Error('Contraseña incorrecta')
+
       const token = jwt.sign(
         {
           id: cliente._id,
@@ -45,10 +40,7 @@ export class ClienteService {
         token
       }
     } catch (error) {
-      return {
-        message: 'Error al loguearse',
-        error: error.message
-      }
+      throw new Error(error.message)
     }
   }
   static async actualizarCliente (id, data) {
