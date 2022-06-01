@@ -18,7 +18,7 @@ export async function loginCliente (req, res) {
     return res.status(200).json(cliente)
   } catch (error) {
     return res.status(400).json({
-      message: 'Error al loguearse',
+      message: 'Error al loguearse xd ',
       error: error.message
     })
   }
