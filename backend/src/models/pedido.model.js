@@ -3,9 +3,11 @@ import mongoose from 'mongoose'
 const schemaPedido = new mongoose.Schema(
   {
     fecha: {
+      // hacer que fecha sea una fecha de ahora
       type: mongoose.Schema.Types.Date,
       required: true
     },
+
     total: {
       type: mongoose.Schema.Types.Number,
       required: true,
