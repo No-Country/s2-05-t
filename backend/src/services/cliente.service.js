@@ -46,12 +46,10 @@ export class ClienteService {
   static async actualizarCliente (id, data) {
     try {
       const cliente = await clienteModel.findByIdAndUpdate(id, data)
-      return cliente
+      const clienteActualizado = await clienteModel.findById(id)
+      return clienteActualizado
     } catch (error) {
-      return {
-        message: 'Error al actualizar el cliente',
-        error: error.message
-      }
+      throw new Error(error.message)
     }
   }
   static async eliminarCliente (id) {
@@ -59,38 +57,32 @@ export class ClienteService {
       const cliente = await clienteModel.findByIdAndDelete(id)
       return cliente
     } catch (error) {
-      return {
-        message: 'Error al eliminar el cliente',
-        error: error.message
-      }
+      throw new Error(error.message)
     }
   }
   static async obtenerClientes () {
     try {
-      const clientes = await clienteModel.find()
+      // obtener todos los clientes pero sin la contraseña
+      const clientes = await clienteModel.find({}, { password: 0 })
       return clientes
     } catch (error) {
-      return {
-        message: 'Error al obtener los clientes',
-        error: error.message
-      }
+      throw new Error(error.message)
     }
   }
 
   static async obtenerClienteId (id) {
     try {
-      const clientes = await clienteModel.findById(id).populate('Pedido', {
-        _id: 1,
-        fecha: 1,
-        total: 1,
-        productos: 1
-      })
+      const clientes = await clienteModel
+        .findById(id, { password: 0 })
+        .populate('pedidos', {
+          _id: 1,
+          fecha: 1,
+          total: 1,
+          productos: 1
+        })
       return clientes
     } catch (error) {
-      return {
-        message: 'Error al obtener los clientes',
-        error: error.message
-      }
+      throw new Error(error.message)
     }
   }
 }

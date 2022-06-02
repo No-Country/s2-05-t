@@ -25,10 +25,13 @@ export async function loginCliente (req, res) {
 }
 export async function actualizarCliente (req, res) {
   try {
-    const cliente = await ClienteService.actualizarCliente(
-      req.params.id,
-      req.body
-    )
+    const { password, nombre, apellido } = req.body
+    const cliente = await ClienteService.actualizarCliente(req.params.id, {
+      password,
+      nombre,
+      apellido
+    })
+
     console.log(req.body, req.params.id)
     return res.status(200).json(cliente)
   } catch (error) {
@@ -45,6 +48,17 @@ export async function obtenerClientes (req, res) {
   } catch (error) {
     return res.status(400).json({
       message: 'Error al obtener los clientes',
+      error: error.message
+    })
+  }
+}
+export async function obtenerClienteId (req, res) {
+  try {
+    const cliente = await ClienteService.obtenerClienteId(req.params.id)
+    return res.status(200).json(cliente)
+  } catch (error) {
+    return res.status(400).json({
+      message: 'Error al obtener el cliente',
       error: error.message
     })
   }

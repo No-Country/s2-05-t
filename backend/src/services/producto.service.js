@@ -6,46 +6,49 @@ export class ProductoService {
       const nuevoProducto = await productoModel.create(producto)
       return nuevoProducto
     } catch (error) {
-      return {
-        message: 'Error al crear el producto',
-        error: error.message
-      }
+      throw new Error(error.message)
     }
   }
 
   static async actualizarProducto (id, data) {
     try {
       const producto = await productoModel.findByIdAndUpdate(id, data)
+
       return producto
     } catch (error) {
-      return {
-        message: 'Error al actualizar el producto',
-        error: error.message
-      }
+      throw new Error(error.message)
     }
   }
 
   static async obtenerProductos () {
     try {
-      const productos = await productoModel.find()
+      const productos = await productoModel.find().populate('administrador', {
+        nombre: 1,
+        apellido: 1,
+        _id: 0
+      })
       return productos
     } catch (error) {
-      return {
-        message: 'Error al obtener los productos',
-        error: error.message
-      }
+      throw new Error(error.message)
     }
   }
 
   static async obtenerProductoId (id) {
     try {
-      const producto = await productoModel.findById(id)
+      const producto = await productoModel
+        .findById(id)
+        .populate('administrador', { nombre: 1, apellido: 1, _id: 0 })
       return producto
     } catch (error) {
-      return {
-        message: 'Error al obtener el producto',
-        error: error.message
-      }
+      throw new Error(error.message)
+    }
+  }
+  static async eliminarProducto (id) {
+    try {
+      const producto = await productoModel.findByIdAndDelete(id)
+      return producto
+    } catch (error) {
+      throw new Error(error.message)
     }
   }
 }

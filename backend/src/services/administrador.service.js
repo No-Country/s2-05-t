@@ -1,15 +1,13 @@
 import { administradorModel } from '../models/administrador.model.js'
-
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 export class AdministradorService {
   static async crearAdministrador (administrador) {
     try {
       const nuevoAdministrador = await administradorModel.create(administrador)
       return nuevoAdministrador
     } catch (error) {
-      return {
-        message: 'Error al crear el administrador',
-        error: error.message
-      }
+      throw new Error(error.message)
     }
   }
 
@@ -18,10 +16,36 @@ export class AdministradorService {
       const administrador = await administradorModel.findByIdAndUpdate(id, data)
       return administrador
     } catch (error) {
+      throw new Error(error.message)
+    }
+  }
+  static async loginAdmin (email, password) {
+    try {
+      const cliente = await administradorModel.findOne({ email })
+      if (!cliente) throw new Error('El cliente no existe')
+
+      const validPassword = bcrypt.compareSync(password, cliente.password)
+
+      if (!validPassword) throw new Error('Contraseña incorrecta')
+
+      const token = jwt.sign(
+        {
+          id: cliente._id,
+          email: cliente.email,
+          nombre: cliente.nombre,
+          apellido: cliente.apellido
+        },
+        process.env.SECRET_JWT,
+        {
+          expiresIn: '5h'
+        }
+      )
       return {
-        message: 'Error al actualizar el administrador',
-        error: error.message
+        message: 'Login correcto',
+        token
       }
+    } catch (error) {
+      throw new Error(error.message)
     }
   }
 
@@ -30,10 +54,7 @@ export class AdministradorService {
       const administradores = await administradorModel.find()
       return administradores
     } catch (error) {
-      return {
-        message: 'Error al obtener los administradores',
-        error: error.message
-      }
+      throw new Error(error.message)
     }
   }
 
@@ -42,10 +63,7 @@ export class AdministradorService {
       const administrador = await administradorModel.findById(id)
       return administrador
     } catch (error) {
-      return {
-        message: 'Error al obtener el administrador',
-        error: error.message
-      }
+      throw new Error(error.message)
     }
   }
 }
