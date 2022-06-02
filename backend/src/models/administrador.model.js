@@ -13,7 +13,9 @@ const schemaAdministrador = new mongoose.Schema(
     },
     email: {
       type: mongoose.Schema.Types.String,
-      required: true
+      required: true,
+      unique: true,
+      lowercase: true
     },
     password: {
       type: mongoose.Schema.Types.String,

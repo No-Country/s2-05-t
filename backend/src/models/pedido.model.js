@@ -12,8 +12,8 @@ const schemaPedido = new mongoose.Schema(
       type: mongoose.Schema.Types.Number,
       required: true,
       default: 0,
-      set: function (precio) {
-        return parseFloat(precio).toFixed(2)
+      set: function (total) {
+        return parseFloat(total).toFixed(2)
       }
     },
     estado: {

@@ -46,7 +46,12 @@ export class ProductoService {
   static async eliminarProducto (id) {
     try {
       const producto = await productoModel.findByIdAndDelete(id)
-      return producto
+      return [
+        {
+          message: 'Producto eliminado'
+        },
+        producto
+      ]
     } catch (error) {
       throw new Error(error.message)
     }

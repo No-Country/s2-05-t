@@ -14,5 +14,5 @@ productoRouter.get('/productos', obtenerProductos)
 productoRouter
   .route('/producto/:id', validarAdmin)
   .put(validarAdmin, actualizarProducto)
-  .delete(eliminarProducto)
+  .delete(validarAdmin, eliminarProducto)
   .get(obtenerProductoId)
