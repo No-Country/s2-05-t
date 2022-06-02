@@ -48,8 +48,26 @@ export class ClienteService {
   static async actualizarCliente (id, data) {
     try {
       const cliente = await clienteModel.findByIdAndUpdate(id, data)
-      const clienteActualizado = await clienteModel.findById(id)
-      return clienteActualizado
+      const clienteActualizado = await clienteModel.findById(id, {
+        password: 0
+      })
+      // return clienteActualizado
+      const token = jwt.sign(
+        {
+          id: clienteActualizado._id,
+          email: clienteActualizado.email,
+          nombre: clienteActualizado.nombre,
+          apellido: clienteActualizado.apellido
+        },
+        process.env.SECRET_JWT,
+        {
+          expiresIn: '48h'
+        }
+      )
+      return {
+        message: 'Actualizacion  correcta',
+        token
+      }
     } catch (error) {
       throw new Error(error.message)
     }
