@@ -3,9 +3,9 @@ import { PedidoService } from '../services/pedido.service.js'
 export async function crearPedido (req, res) {
   try {
     const nuevoPedido = await PedidoService.crearPedido(req.body)
-    res.status(201).json(nuevoPedido)
+    return res.status(201).json(nuevoPedido)
   } catch (error) {
-    res.status(400).json({
+    return res.status(400).json({
       message: 'Error al crear el pedido',
       error: error.message
     })

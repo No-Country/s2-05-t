@@ -33,9 +33,9 @@ export async function actualizarAdministrador (req, res) {
       req.params.id,
       req.body
     )
-    res.status(200).json(administrador)
+    return res.status(200).json(administrador)
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: 'Error al actualizar el administrador',
       error: error.message
     })
