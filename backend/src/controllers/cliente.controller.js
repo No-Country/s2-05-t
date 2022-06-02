@@ -1,13 +1,26 @@
 import { ClienteService } from '../services/cliente.service.js'
+import { validadorCliente } from '../tools/cliente.dto.js'
 
 export async function crearCliente (req, res) {
   try {
-    const nuevoCliente = await ClienteService.signupCliente(req.body)
-    res.status(201).json(nuevoCliente)
+    const { nombre, apellido, email, password } = validadorCliente(
+      req.body,
+      res
+    )
+
+    const nuevoCliente = await ClienteService.signupCliente({
+      nombre,
+      apellido,
+      email,
+      password
+    })
+
+    return res.status(201).json(nuevoCliente)
   } catch (error) {
-    res.status(400).json({
+    return res.status(400).json({
       message: 'Error al crear el cliente',
-      error: error.message
+
+      error: error.code === 11000 ? 'El cliente ya existe' : error.message
     })
   }
 }

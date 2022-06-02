@@ -5,11 +5,13 @@ import bcrypt from 'bcrypt'
 export class ClienteService {
   static async signupCliente (data) {
     try {
+      // const { email } = data
+
       const nuevoCliente = clienteModel.create(data)
       return nuevoCliente
     } catch (error) {
       return {
-        message: 'Error al crear el cliente',
+        message: 'Error al crear el cliente xd',
         error: error.message
       }
     }
