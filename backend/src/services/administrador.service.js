@@ -5,7 +5,25 @@ export class AdministradorService {
   static async crearAdministrador (administrador) {
     try {
       const nuevoAdministrador = await administradorModel.create(administrador)
-      return nuevoAdministrador
+      const admin = await administradorModel.findById(nuevoAdministrador._id)
+      if (!admin) throw new Error('El cliente ya fue')
+
+      const token = jwt.sign(
+        {
+          id: admin._id,
+          email: admin.email,
+          nombre: admin.nombre,
+          apellido: admin.apellido
+        },
+        process.env.SECRET_JWT,
+        {
+          expiresIn: '45h'
+        }
+      )
+      return {
+        message: 'ADMINISTRADOR  creado',
+        token
+      }
     } catch (error) {
       throw new Error(error.message)
     }
