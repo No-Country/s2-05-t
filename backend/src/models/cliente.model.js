@@ -26,7 +26,7 @@ const schemaCliente = new mongoose.Schema(
     fechaNacimiento: {
       type: mongoose.Schema.Types.Date
     },
-    pedido: {
+    pedidos: {
       type: [mongoose.Schema.Types.ObjectId],
       ref: 'Pedido'
     }

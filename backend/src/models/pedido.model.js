@@ -7,13 +7,17 @@ const schemaPedido = new mongoose.Schema(
       required: true
     },
     total: {
-      type: mongoose.Schema.Types.Decimal128,
-      required: true
+      type: mongoose.Schema.Types.Number,
+      required: true,
+      default: 0,
+      set: function (precio) {
+        return parseFloat(precio).toFixed(2)
+      }
     },
     estado: {
       type: mongoose.Schema.Types.String,
-      enum: ['Pendiente', 'Enviado', 'Entregado', 'Cancelado'],
-      default: 'Pendiente'
+      enum: ['PENDIENTE', 'ENVIADO', 'ENTREGADO', 'CANCELADO'],
+      default: 'PENDIENTE'
     },
     cliente: {
       type: mongoose.Schema.Types.ObjectId,

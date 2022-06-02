@@ -7,9 +7,12 @@ const schemaProducto = new mongoose.Schema(
       required: true
     },
     precio: {
-      type: mongoose.Schema.Types.Decimal128,
+      type: mongoose.Schema.Types.Number,
       required: true,
-      default: 0
+      default: 0,
+      set: function (precio) {
+        return parseFloat(precio).toFixed(2)
+      }
     },
     descripcion: {
       type: mongoose.Schema.Types.String,
@@ -17,13 +20,14 @@ const schemaProducto = new mongoose.Schema(
     },
     imagen: {
       type: mongoose.Schema.Types.String,
-      required: true
+      default: 'https://via.placeholder.com/150'
+      // required: true
     },
     tipo: {
       type: mongoose.Schema.Types.String,
-      enum: ['PLATO', 'BEBIDA', 'POSTRE', 'Otro'],
-      default: 'Otro',
-      required: true
+      enum: ['PLATO', 'BEBIDA', 'POSTRE', 'OTRO'],
+      default: 'OTRO'
+      // required: true
     },
     estado: {
       type: mongoose.Schema.Types.Boolean,
