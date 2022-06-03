@@ -28,12 +28,15 @@ const products = [
 export default function Home () {
   return (
     <section className='home'>
-      <h1 className='home-title'>App Food</h1>
-      <h2 className='home-subtitle'>Busca y compra la comida que mas te guste</h2>
+      <div className='container-home-title'>
+        <h1 style={{ fontSize: '25px', color: 'var(--third-color)', margin: '0', marginTop: '1em' }}>En</h1>
+        <h1 className='home-title'>AppFood</h1>
+        <h2 className='home-subtitle'>Busca y comprá la comida que más te guste</h2>
+      </div>
       <img src={banner} alt='banner' className='home-banner' />
       <div className='home-container-search'>
-        <header className='home-container-search__header' />
-        <br />
+        {/* <header className='home-container-search__header' />
+        <br /> */}
         <ListProductsSlide products={products} />
       </div>
     </section>

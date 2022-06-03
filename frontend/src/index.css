@@ -98,5 +98,25 @@ code {
 }
 
 .color-yellow{
-  color: var(--third-color);
+  color: var(--third-color) !important;
+}
+
+.color-white{
+  color: white !important
+}
+
+.bg-red {
+  background-color: var(--main-color);
+}
+
+.MuiList-padding{
+  padding: 0 !important;
+}
+
+.Link{
+  text-decoration: none;
+  color: white;
+}
+.Link:visited{
+  color: inherit;
 }
