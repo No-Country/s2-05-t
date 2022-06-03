@@ -9,10 +9,9 @@ export default function ListProductsSlide ({ products }) {
     <div>
       <Swiper
         className='listproductsslide'
-        slidesPerView={4}
-        spaceBetween={15}
-        slidesPerGroup={2}
-        loop
+        slidesPerView={3}
+        spaceBetween={-20}
+        slidesPerGroup={1}
         pagination={{
           clickable: true
         }}
