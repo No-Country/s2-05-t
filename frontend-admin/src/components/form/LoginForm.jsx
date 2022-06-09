@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import { loginAdmin} from '../../services/admin.services'
 import { useNavigate } from 'react-router-dom'
+import { AdminContext } from '../../context/AdminProvider';
 
 export  function LoginFormAdmin () {
-  const [token, setToken] = useState(()=>{
-    return window.localStorage.getItem('token')
-  })
+  
+  const {token, enviarToken } = useContext(AdminContext);
   const navigate = useNavigate()
   const [error, setError] = useState('')
   const [admin, setAdmin] = useState({
     email: '',
     password: ''
   })
-  console.log(token)
+  
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -21,12 +21,12 @@ export  function LoginFormAdmin () {
     loginAdmin(admin)
       .then(res => {
         navigate('/dashboard')
-        setToken(res.data.token)
+        enviarToken(res.data.token)
         console.log(res)
       })
       .catch(err => {
         console.log(err.response.data)
-        setToken(null)
+        enviarToken(null)
         setError(err.response.data.error)
       })
   }

@@ -1,26 +1,21 @@
-import { createContext,useState } from "react";
+import { createContext } from "react";
 // import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
-import { loginAdmin } from "../services/admin.services";
+import { useLocalStorage } from "../hook/useLocalStorage";
 export const AdminContext = createContext();
 
 
 export default function AdminProvider({ children }) {
-    const [admin, setAdmin] = useState(null);
-    const [token, setToken] = useState(null);
-    const login = (admin) => {
-        loginAdmin(admin)
-            .then(res => {
-                setToken(res.data.token);
-            })
-            .catch(err => {
-                console.log(err.response.data);
-            });
-    };
+    const [admin, setAdmin] = useLocalStorage('user',null);
+    const [token, setToken] = useLocalStorage('token',null);
+    
+    const enviarToken = (token) => {
+        return setToken(token);
+    }
     useEffect(() => {
-        if (admin) {
-            const decoded = jwtDecode(admin);
+        if (token) {
+            const decoded = jwtDecode(token);
             setAdmin(decoded);
             console.log(decoded);
         }
@@ -29,7 +24,7 @@ export default function AdminProvider({ children }) {
     const value = {
         admin,
         token,
-        login
+        enviarToken
     };
 
     return (
