@@ -2,7 +2,7 @@ import axiosConfig from '../configs/axios.config'
 
 export const createNewPedido = (data, token) => {
   return axiosConfig.post('/api/pedidos', data, {
-    headers: { authorization: `Bearer ${token}` }
+    headers: { authorization: `Bearer ${token.replace(/['"]+/g, '')}` }
   })
 }
 
@@ -16,6 +16,6 @@ export const getPedidoById = id => {
 
 export const updatePedido = (id, data, token) => {
   return axiosConfig.put(`/api/pedidos/${id}`, data, {
-    headers: { authorization: `Bearer ${token}` }
+    headers: { authorization: `Bearer ${token.replace(/['"]+/g, '')}` }
   })
 }
