@@ -2,7 +2,7 @@ import axiosConfig from '../configs/axios.config'
 
 export const createProduct = (data, token) => {
   return axiosConfig.post('/api/productos', data, {
-    headers: { authorization: `Bearer ${token}` }
+    headers: { authorization: `Bearer ${token.replace(/['"]+/g, '')}` }
   })
 }
 
@@ -12,7 +12,7 @@ export const getProducts = () => {
 
 export const updateProduct = (id, data, token) => {
   return axiosConfig.put(`/api/productos/${id}`, data, {
-    headers: { authorization: `Bearer ${token}` }
+    headers: { authorization: `Bearer ${token.replace(/['"]+/g, '')}` }
   })
 }
 export const getProductById = id => {
@@ -21,6 +21,6 @@ export const getProductById = id => {
 
 export const deleteProduct = (id, token) => {
   return axiosConfig.delete(`/api/productos/${id}`, {
-    headers: { authorization: `Bearer ${token}` }
+    headers: { authorization: `Bearer ${token.replace(/['"]+/g, '')}` }
   })
 }
