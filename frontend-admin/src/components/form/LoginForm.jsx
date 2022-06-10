@@ -20,7 +20,7 @@ export  function LoginFormAdmin () {
 
     loginAdmin(admin)
       .then(res => {
-        navigate('/dashboard')
+        navigate('/')
         enviarToken(res.data.token)
         console.log(res)
       })
@@ -37,7 +37,7 @@ export  function LoginFormAdmin () {
   }, [token, navigate])
 
   return (
-    <div className='flex flex-col justify-center items-center h-[100vh]'>
+    <div className='flex flex-col justify-center items-center h-[80vh]'>
       <h1 className='m-10 font-bold text-3xl'>Login Admin</h1>
       <div>
         <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center'>
