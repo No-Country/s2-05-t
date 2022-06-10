@@ -1,17 +1,24 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { LoginFormAdmin } from './components/form/LoginForm'
+import Home from './pages/Home'
 import AdminProvider from './context/AdminProvider'
-import AdminPages from './pages/AdminPages'
+import Navbar from './components/Navbar'
+import PrivateRoute from './routes/PrivateRoute'
+import Products from './components/Products'
 
 function App () {
+  
   return (
     <AdminProvider>
       <Router>
+        <Navbar />
         <Routes>
-          <Route path='/' element={<h1>Home</h1>} />
+          <Route path='/' element={<Home />} />
           <Route path='/login' element={<LoginFormAdmin />} />
-          <Route path='/dashboard' element={<AdminPages />} />
+          <Route path='/products' element={<PrivateRoute>
+            <Products />
+          </PrivateRoute>} />
         </Routes>
       </Router>
     </AdminProvider>
