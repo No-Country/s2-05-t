@@ -1,0 +1,54 @@
+.CardSearchResults{
+  background-color: #d9d9d980;
+  border-radius: 11px;
+  height: 200px;
+  width: 125px;
+  padding: 10px 6px;
+  margin: auto;
+  box-shadow: 3px 5px 5px 0 rgba(128, 128, 128, 0.5);
+}
+
+.CardSearchResults > header{
+  text-align: right;
+  color: var(--main-color-light);
+  width: 100%;
+}
+
+.CardSearchResults img {
+  width: 90px;
+  border-radius: 11px;
+  height: 80px;
+  object-fit: cover;
+  margin: .7em 0;
+}
+
+.CardSearchResults > figcaption{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 6px 3px;
+  letter-spacing: .7px;
+  font-weight: 600;
+}
+
+.CardSearchResults_container-price{
+  padding: .5em 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.CardSearchResults_container-price > span {
+  letter-spacing: .7px;
+}
+
+.CardSearchResults_button-buy {
+  background-color: var(--main-color-light);
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 3px 5px;
+}
