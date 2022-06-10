@@ -1,0 +1,11 @@
+.NavAuxiliar{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: .5em 1em;
+}
+
+.NavAuxiliar-red{
+  background-color: var(--main-color);
+  color: white;
+}
