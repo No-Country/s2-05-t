@@ -1,6 +1,7 @@
 import './Home.css'
 import banner from '../../assets/img/banner.png'
 import ListProductsSlide from '../../components/ListProductsSlide/ListProductsSlide'
+import CarouselProductsGeneral from '../../components/CarouselProductsGeneral/CarouselProductsGeneral'
 
 const products = [
   {
@@ -35,10 +36,13 @@ export default function Home () {
       </div>
       <img src={banner} alt='banner' className='home-banner' />
       <div className='home-container-search'>
-        {/* <header className='home-container-search__header' />
-        <br /> */}
         <ListProductsSlide products={products} />
       </div>
+      <hr className='separator' />
+      <section>
+        <CarouselProductsGeneral products={products} title='Recomendados' src='/search/recommended' />
+        <CarouselProductsGeneral products={products} title='Populares' src='/search/most-popular' />
+      </section>
     </section>
   )
 }

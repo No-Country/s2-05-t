@@ -15,6 +15,7 @@ code {
 
 :root{
   --main-color: #E6130D;
+  --main-color-light: #FF615C;
   --second-color: #10662E;
   --second-color-light: #25E668;
   --second-color-transparent: #6cea984a; 
@@ -119,4 +120,11 @@ code {
 }
 .Link:visited{
   color: inherit;
+}
+
+.separator{
+  margin-top: 0;
+  background-color: var(--main-color);
+  height: 8px;
+  width: 100%;
 }
