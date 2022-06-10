@@ -6,6 +6,7 @@ import Register from './pages/Register/Register'
 import Navbar from './components/Navbar/Navbar'
 import Carrito from './pages/Carrito/Carrito'
 import SearchResults from './pages/SearchResults/SearchResults'
+import Profile from './pages/Profile/Profile'
 
 function App () {
   const { pathname } = useLocation()
@@ -17,8 +18,9 @@ function App () {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/carrito' element={<Carrito />} />
+        <Route path='/cart' element={<Carrito />} />
         <Route path='/search/:searched' element={<SearchResults />} />
+        <Route path='/profile' element={<Profile />} />
 
       </Routes>
     </div>

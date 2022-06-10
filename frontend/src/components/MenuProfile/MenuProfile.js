@@ -17,7 +17,7 @@ export default function MenuProfile () {
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title='Open settings'>
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt='user default' src='https://img2.freepng.es/20180603/jx/kisspng-user-interface-design-computer-icons-default-stephen-salazar-photography-5b1462e1b19d70.1261504615280626897275.jpg' />
+          <Avatar alt='user default' src='https://media.istockphoto.com/vectors/coffee-or-tea-cup-cartoon-character-dancing-and-smiling-joyful-mug-vector-id1173348546' />
         </IconButton>
       </Tooltip>
       <Menu
@@ -41,6 +41,9 @@ export default function MenuProfile () {
         </MenuItem>
         <MenuItem key='2' sx={{ bgcolor: 'primary.main', color: 'primary.contrastText' }} onClick={handleCloseUserMenu}>
           <Link to='/cart' className='Link'> Carrito de compras </Link>
+        </MenuItem>
+        <MenuItem key='2' sx={{ bgcolor: 'primary.main', color: 'primary.contrastText' }} onClick={handleCloseUserMenu}>
+          <Link to='/profile' className='Link'> Mi perfil </Link>
         </MenuItem>
       </Menu>
     </Box>
