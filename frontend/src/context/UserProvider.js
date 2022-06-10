@@ -18,7 +18,7 @@ export function UserProvider ({ children }) {
       setUser(decoded)
       console.log(decoded)
     }
-  }, [user, token])
+  }, [token])
 
   const value = {
     user,
