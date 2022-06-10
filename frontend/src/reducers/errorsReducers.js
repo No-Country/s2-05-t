@@ -1,3 +1,4 @@
+// Errores de los formularios de sesion
 export const initialValuesErrors = {
   name: '', surname: '', email: '', password: '', passwordRepeated: '', general: '', isError: false
 }
@@ -8,8 +9,7 @@ export const errorsMessages = {
 }
 
 export default function errorsReducer (state, error) {
-  const isError = !!error.value.length
-  console.log(isError)
+  const isError = !!error.value.length // si el error viene vacio es porque no hay error entonces es false sino true
   switch (error.name) {
     case 'name':
       return { ...state, name: error.value, isError }
