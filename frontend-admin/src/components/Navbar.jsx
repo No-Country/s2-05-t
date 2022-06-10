@@ -1,6 +1,6 @@
 import React,{useContext,useState} from 'react'
 import { AdminContext } from '../context/AdminProvider';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link } from 'react-router-dom';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 
@@ -21,7 +21,7 @@ export default function Navbar () {
     }
 
   return (
-    <div className='flex flex-col   md:flex-row justify-around p-5  w-[100vw] shadow-md bg-slate-100 items-center'>
+    <div className='flex flex-col md:h-[8vh]  md:flex-row justify-around p-5  w-[100vw] shadow-md bg-slate-100 items-center'>
       <div >
         <h1 className='font-bold text-xl'>Website Administrator</h1>
       </div>
@@ -29,16 +29,16 @@ export default function Navbar () {
       <div className={togle? 'block md:block h-64 md:h-9 ':'hidden md:block' } >
         <ul className='flex flex-col space-y-6 mt-4 md:mt-0 md:space-y-0 md:flex-row md:space-x-11 md:font-medium md:items-center'>
           <li>
-            <a href='/'>Home</a>
+            <Link to='/'>Home</Link>
           </li>
           <li>
-            <a href='/products'>Productos</a>
+            <Link to='/products'>Productos</Link>
           </li>
           <li>
-            <a href='/users'>Clientes</a>
+            <Link to='/users'>Clientes</Link>
           </li>
           <li>
-            <a href='/pedidos'>Pedidos</a>
+            <Link to='/pedidos'>Pedidos</Link>
           </li>
           <li className='relative '>
               {admin ? <button className='px-4 py-1 bg-green-500 rounded-sm cursor-pointer ' onClick={()=>setState(!state)} >{admin.nombre}<ArrowDropDownIcon/> </button>

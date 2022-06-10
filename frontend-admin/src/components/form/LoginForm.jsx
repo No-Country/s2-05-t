@@ -20,8 +20,8 @@ export  function LoginFormAdmin () {
 
     loginAdmin(admin)
       .then(res => {
-        navigate('/')
         enviarToken(res.data.token)
+        navigate('/products')
         console.log(res)
       })
       .catch(err => {
@@ -32,7 +32,7 @@ export  function LoginFormAdmin () {
   }
   useEffect(() => {
     if (token) {
-      navigate('/dashboard')
+      navigate('/products')
     }
   }, [token, navigate])
 
