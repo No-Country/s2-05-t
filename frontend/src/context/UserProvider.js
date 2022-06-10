@@ -17,6 +17,8 @@ export function UserProvider ({ children }) {
       const decoded = jwtDecode(token)
       setUser(decoded)
       console.log(decoded)
+    } else {
+      setUser(null)
     }
   }, [token])
 
