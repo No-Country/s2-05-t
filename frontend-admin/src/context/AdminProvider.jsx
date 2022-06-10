@@ -18,8 +18,10 @@ export default function AdminProvider({ children }) {
             const decoded = jwtDecode(token);
             setAdmin(decoded);
             console.log(decoded);
+        }else{
+            setAdmin(null);
         }
-    }, [admin,token]);
+    }, [token]);
 
     const value = {
         admin,
