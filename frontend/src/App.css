@@ -1,8 +1,18 @@
 .App {
-  text-align: center;
+  /* text-align: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100%; */
+  /* max-width: 1550px; */
+  width: 100%;
+  /* min-height: 100vh; */
+  margin: 0;
+  box-shadow: 0 2px 6px #b1e6cea4;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .App-logo {
@@ -18,7 +28,7 @@
 
 .App-header {
   height: 60px;
-  background-color: var(--main-color) ;
+  background-color: var(--main-color);
 }
 
 .App-link {
