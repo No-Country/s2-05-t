@@ -3,17 +3,11 @@ import React, { useState } from 'react'
 export default function FormProduct ({ handleCreateProduct, loading }) {
   const TOKEN = window.localStorage.getItem('token')
 
-  const [product, setProduct] = useState({
-    nombre: '',
-    precio: 0,
-    descripcion: '',
-    imagen: '',
-    tipo: ''
-  })
+  
 
   return (
     <div className=' flex flex-col items-center justify-center mt-6'>
-      <h2 className='font-bold text-2xl'>Formulario para Agregar productos</h2>
+      <h2 className='font-bold text-2xl'> Agregar productos</h2>
       <form className='md:w-[80vw] flex flex-row font-bold flex-wrap justify-between m-7' onSubmit={() => handleCreateProduct(product, TOKEN)}>
         <div>
 
