@@ -6,6 +6,7 @@ import {
   updateProduct,
   getProductById
 } from '../services/productos.services'
+import Cargando from './pure/Loading'
 import Modal from './pure/Modal'
 import ModalEdit from './pure/ModalEdit'
 import SearchProduct from './pure/SearchProduct'
@@ -91,6 +92,9 @@ export default function Products () {
         setError(true)
       })
   }
+  if (loading) <Cargando />
+  if (Error) <Cargando />
+  if (loading2) <Cargando />
 
   return (
     <div>
