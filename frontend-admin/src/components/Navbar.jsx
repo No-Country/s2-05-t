@@ -10,7 +10,7 @@ export default function Navbar () {
   const [togle, setTogle] = useState(false)
 
   const navigate = useNavigate()
-  console.log(admin)
+  // console.log(admin)
   const handleClick = () => {
     navigate('/login')
   }

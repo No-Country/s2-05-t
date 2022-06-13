@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import PrivateRoute from './routes/PrivateRoute'
 import Products from './components/Products'
 import ClientesPages from './pages/ClientesPages'
+import PedidosPages from './pages/PedidosPages'
 
 function App () {
   return (
@@ -29,6 +30,14 @@ function App () {
             element={
               <PrivateRoute>
                 <ClientesPages />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/pedidos'
+            element={
+              <PrivateRoute>
+                <PedidosPages />
               </PrivateRoute>
             }
           />
