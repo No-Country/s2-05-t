@@ -65,14 +65,18 @@ export default function Pedidos () {
       </div>
       <div
         className={`absolute duration-1000 ease-in-out top-0  w-full ${
-          information ? 'translate-y-48 ' : '-translate-y-7'
+          information
+            ? 'translate-y-[600px]  md:translate-y-48 '
+            : 'md:-translate-y-7'
         }`}
       >
         <TablePedidos
+          information={information}
           filtrarPedidos={setEstado}
           pedidos={newPedidos}
           setInformation={setInformation}
           setId={setId}
+          id={id}
         />
       </div>
     </div>

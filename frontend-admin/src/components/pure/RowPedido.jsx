@@ -1,6 +1,13 @@
 import React from 'react'
 
-export default function RowPedido ({ pedido, setId, index, setInformation }) {
+export default function RowPedido ({
+  pedido,
+  setId,
+  index,
+  setInformation,
+  informacion,
+  id
+}) {
   return (
     <tr
       className='hover:shadow-2xl hover:bg-slate-200 cursor-pointer'
@@ -9,11 +16,23 @@ export default function RowPedido ({ pedido, setId, index, setInformation }) {
       }}
     >
       <td className='px-6 py-4 whitespace-no-wrap border-b border-gray-200'>
-        <div className='text-sm leading-5 text-gray-900'>{index + 1}</div>
+        <div
+          className={`text-sm p-1 leading-5 flex items-center rounded-full text-gray-900`}
+        >
+          <span
+            className={`text-sm px-3 leading-5 flex items-center rounded-full text-gray-900 ${id &&
+              id === pedido._id &&
+              'bg-green-300'} `}
+          >
+            {index + 1}
+          </span>
+        </div>
       </td>
 
       <td className='px-6 py-4 whitespace-no-wrap border-b border-gray-200'>
-        <div className='flex items-center'>
+        <div
+          className={`text-sm p-1 leading-5 flex items-center rounded-full text-gray-900 `}
+        >
           <div className='ml-4'>
             <div className='text-sm leading-5 font-medium text-gray-900 capitalize'>
               {pedido.cliente.nombre} {pedido.cliente.apellido}

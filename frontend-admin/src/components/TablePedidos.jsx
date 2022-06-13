@@ -4,7 +4,9 @@ export default function TablePedidos ({
   pedidos,
   setId,
   filtrarPedidos,
-  setInformation
+  setInformation,
+  information,
+  id
 }) {
   return (
     <main className='flex-1 overflow-x-hidden overflow-y-auto '>
@@ -50,7 +52,7 @@ export default function TablePedidos ({
                       Total
                     </th>
                     <th className='px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider'>
-                      Cantidad
+                      N° Productos
                     </th>
                   </tr>
                 </thead>
@@ -58,6 +60,8 @@ export default function TablePedidos ({
                 <tbody className='bg-white'>
                   {pedidos.map((pedido, i) => (
                     <RowPedido
+                      information={information}
+                      id={id}
                       key={i}
                       setInformation={setInformation}
                       pedido={pedido}

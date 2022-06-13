@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { getPedidos, updatePedido } from '../../services/pedidos.services'
 import CloseIcon from '@mui/icons-material/Close'
 export default function Information ({
@@ -7,32 +7,44 @@ export default function Information ({
   setPedidos,
   setId
 }) {
+  const [error, setError] = useState(false)
   const handleEnviar = data => {
     let datos = {
       estado: data
     }
-    updatePedido(
-      information._id,
-      datos,
-      window.localStorage.getItem('token')
-    ).then(res => {
-      setInformation(res.data)
-      getPedidos().then(res => {
-        setPedidos(
-          res.data.sort(
-            (a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime()
+    updatePedido(information._id, datos, window.localStorage.getItem('token'))
+      .then(res => {
+        setInformation(res.data)
+        getPedidos().then(res => {
+          setPedidos(
+            res.data.sort(
+              (a, b) =>
+                new Date(b.fecha).getTime() - new Date(a.fecha).getTime()
+            )
           )
-        )
+        })
       })
-    })
+      .catch(err => {
+        console.log(err)
+        setError(err.response.data.message)
+      })
   }
+  console.log(error)
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        setError(false)
+      }, 3000)
+    }
+  }, [error])
 
   return (
     <div className='w-full lg:w-1/2 mx-auto m-8 relative '>
-      <div className='absolute -right-2 -top-5 cursor-pointer'>
+      <div className='absolute -right-0 -top-5 cursor-pointer'>
         <CloseIcon onClick={() => setId(null)} />
       </div>
-      {/* <h2 className='text-lg  '>Informacion</h2> */}
+      {error && <h1>Error, {error}</h1>}
+
       <div className=' m-4 p-4 flex flex-col md:flex-row  transition-shadow border rounded-lg shadow-sm hover:shadow-lg'>
         <div className='my-3'>
           <p className='text-gray-700 '>Cliente:</p>
