@@ -6,6 +6,7 @@ import {
   updateProduct,
   getProductById
 } from '../services/productos.services'
+import Cargando from './pure/Loading'
 import Modal from './pure/Modal'
 import ModalEdit from './pure/ModalEdit'
 import SearchProduct from './pure/SearchProduct'
@@ -49,7 +50,6 @@ export default function Products () {
   useEffect(() => {
     getProducts()
       .then(res => {
-        console.log(res)
         setProducts(res.data)
       })
       .catch(err => {
@@ -63,7 +63,6 @@ export default function Products () {
   const handleEdit = product => {
     getProductById(product._id)
       .then(res => {
-        console.log(res)
         setProduct(res.data)
         setOpenModal2(true)
       })
@@ -91,6 +90,9 @@ export default function Products () {
         setError(true)
       })
   }
+  if (loading) <Cargando />
+  if (Error) <Cargando />
+  if (loading2) <Cargando />
 
   return (
     <div>

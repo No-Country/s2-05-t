@@ -10,7 +10,7 @@ export default function Navbar () {
   const [togle, setTogle] = useState(false)
 
   const navigate = useNavigate()
-  console.log(admin)
+  // console.log(admin)
   const handleClick = () => {
     navigate('/login')
   }
@@ -37,7 +37,7 @@ export default function Navbar () {
             <Link to='/products'>Productos</Link>
           </li>
           <li>
-            <Link to='/users'>Clientes</Link>
+            <Link to='/clientes'>Clientes</Link>
           </li>
           <li>
             <Link to='/pedidos'>Pedidos</Link>

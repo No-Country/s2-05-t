@@ -23,8 +23,8 @@ export default function SearchProduct ({
             type='text'
             value={name}
             onChange={e => setName(e.target.value)}
-            placeholder='  Buscar producto'
-            className='focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2  ring-1 ring-slate-200 shadow-sm w-[250px]'
+            placeholder='Buscar producto'
+            className='focus:ring-2  p-2 focus:ring-blue-500 focus:outline-none appearance-none text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2  ring-1 ring-slate-200 shadow-sm w-[250px]'
           />
           <div className='absolute right-2 top-1 text-slate-500'>
             <ContentPasteSearchIcon />
