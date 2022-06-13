@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Burger from './components/Burger.js'
 import Cart from './components/Cart.js'
 import './Burgers.css'
+import { useNavigate } from 'react-router-dom'
 
 // IMPORTO LAS IMAGENES
 import Salteña from './images/Salteña.png'
@@ -10,7 +11,7 @@ import Chicken from './images/Chicken.png'
 import Criolla from './images/Criolla.png'
 import Patagonia from './images/patagonia.png'
 
-function Burgers () {
+function Burgers() {
   const [burgers, setBurgers] = useState([
     { id: 5, image: Salteña, nombre: 'SALTEÑA', precio: 450 },
     { id: 4, image: Criolla, nombre: 'CRIOLLA', precio: 500 },
@@ -20,6 +21,10 @@ function Burgers () {
   ])
   console.log(setBurgers.length)
   const [cart, setCart] = useState([])
+  const navigate = useNavigate()
+  const handleBack = () => {
+    navigate('/')
+  }
 
   return (
     <>
@@ -29,7 +34,14 @@ function Burgers () {
         <section className='container__header'>
           {/* BOTON DE LA CABECERA */}
           <div className='container__header__menu'>
-            <button className='container__header__menu--button'>{}</button>
+            <button
+              onClick={() => {
+                handleBack()
+              }}
+              className='container__header__menu--button'
+            >
+              Back
+            </button>
           </div>
 
           {/* TITULO DE LA CABECERA */}
