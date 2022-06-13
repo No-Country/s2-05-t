@@ -5,10 +5,10 @@ import ItemCarousel from '../../components/ItemCarousel/ItemCarousel'
 import './ListProductsSlide.css'
 import { useNavigate } from 'react-router-dom'
 
-export default function ListProductsSlide ({ products }) {
+export default function ListProductsSlide({ products }) {
   const navigate = useNavigate()
   const handleDetail = title => {
-    title === 'Hamburguesas' && navigate('/burgers')
+    title ? navigate(`/${title}`) : navigate('/')
   }
   return (
     <div>
@@ -25,16 +25,16 @@ export default function ListProductsSlide ({ products }) {
       >
         {products && products.length
           ? products.map((el, i) => (
-              <SwiperSlide
-                onClick={() => {
-                  handleDetail(el.title)
-                }}
-                className='productslide'
-                key={i}
-              >
-                <ItemCarousel title={el.title} image={el.image} />
-              </SwiperSlide>
-            ))
+            <SwiperSlide
+              onClick={() => {
+                handleDetail(el.title)
+              }}
+              className='productslide'
+              key={i}
+            >
+              <ItemCarousel title={el.title} image={el.image} />
+            </SwiperSlide>
+          ))
           : ''}
       </Swiper>
     </div>

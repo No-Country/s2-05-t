@@ -3,6 +3,7 @@ import Burger from './components/Burger.js'
 import Cart from './components/Cart.js'
 import './Burgers.css'
 import { useNavigate } from 'react-router-dom'
+import { ArrowBack as ArrowBackIcon } from '@mui/icons-material'
 
 // IMPORTO LAS IMAGENES
 import Salteña from './images/Salteña.png'
@@ -40,7 +41,7 @@ function Burgers() {
               }}
               className='container__header__menu--button'
             >
-              Back
+              <ArrowBackIcon />
             </button>
           </div>
 
