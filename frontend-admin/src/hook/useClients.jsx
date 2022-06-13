@@ -11,7 +11,6 @@ export const useClients = () => {
     try {
       const { data } = await getUsers()
       setClients(data)
-      console.log(data)
     } catch (error) {
       setError(error)
     }

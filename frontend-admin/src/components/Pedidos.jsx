@@ -41,7 +41,6 @@ export default function Pedidos () {
   // console.log(information)
   if (loading) return <Loading />
   if (error) return <h1>Error</h1>
-  console.log(pedidos)
   let newPedidos =
     estado === 'todos' || estado === ''
       ? pedidos

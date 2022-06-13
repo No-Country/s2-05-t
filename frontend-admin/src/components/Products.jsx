@@ -50,7 +50,6 @@ export default function Products () {
   useEffect(() => {
     getProducts()
       .then(res => {
-        console.log(res)
         setProducts(res.data)
       })
       .catch(err => {
@@ -64,7 +63,6 @@ export default function Products () {
   const handleEdit = product => {
     getProductById(product._id)
       .then(res => {
-        console.log(res)
         setProduct(res.data)
         setOpenModal2(true)
       })

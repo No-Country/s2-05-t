@@ -16,7 +16,6 @@ export default function Information ({
       datos,
       window.localStorage.getItem('token')
     ).then(res => {
-      console.log(res)
       setInformation(res.data)
       getPedidos().then(res => {
         setPedidos(

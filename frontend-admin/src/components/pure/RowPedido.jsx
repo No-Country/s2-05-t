@@ -5,7 +5,6 @@ export default function RowPedido ({ pedido, setId, index, setInformation }) {
     <tr
       className='hover:shadow-2xl hover:bg-slate-200 cursor-pointer'
       onClick={() => {
-        console.log('hola')
         setId(pedido._id)
       }}
     >

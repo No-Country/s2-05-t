@@ -12,12 +12,15 @@ export default function AdminProvider ({ children }) {
   const enviarToken = token => {
     return setToken(token)
   }
+  const eviarAdmin = admin => {
+    return setAdmin(admin)
+  }
   useEffect(() => {
     if (token) {
       const decoded = jwtDecode(token)
-      setAdmin(decoded)
+      eviarAdmin(decoded)
     } else {
-      setAdmin(null)
+      eviarAdmin(null)
     }
   }, [token])
 
