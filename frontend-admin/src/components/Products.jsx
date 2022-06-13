@@ -6,7 +6,7 @@ import {
   updateProduct,
   getProductById
 } from '../services/productos.services'
-import Cargando from './pure/Loading'
+import Loading from './pure/Loading'
 import Modal from './pure/Modal'
 import ModalEdit from './pure/ModalEdit'
 import SearchProduct from './pure/SearchProduct'
@@ -48,9 +48,11 @@ export default function Products () {
   }
 
   useEffect(() => {
+    setLoading(true)
     getProducts()
       .then(res => {
         setProducts(res.data)
+        setLoading(false)
       })
       .catch(err => {
         console.log(err)
@@ -90,9 +92,9 @@ export default function Products () {
         setError(true)
       })
   }
-  if (loading) <Cargando />
-  if (Error) <Cargando />
-  if (loading2) <Cargando />
+  if (loading) return <Loading />
+
+  if (loading2) return <Loading />
 
   return (
     <div>

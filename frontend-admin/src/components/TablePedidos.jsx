@@ -4,7 +4,9 @@ export default function TablePedidos ({
   pedidos,
   setId,
   filtrarPedidos,
-  setInformation
+  setInformation,
+  information,
+  id
 }) {
   return (
     <main className='flex-1 overflow-x-hidden overflow-y-auto '>
@@ -58,6 +60,8 @@ export default function TablePedidos ({
                 <tbody className='bg-white'>
                   {pedidos.map((pedido, i) => (
                     <RowPedido
+                      information={information}
+                      id={id}
                       key={i}
                       setInformation={setInformation}
                       pedido={pedido}

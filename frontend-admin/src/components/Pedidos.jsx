@@ -69,10 +69,12 @@ export default function Pedidos () {
         }`}
       >
         <TablePedidos
+          information={information}
           filtrarPedidos={setEstado}
           pedidos={newPedidos}
           setInformation={setInformation}
           setId={setId}
+          id={id}
         />
       </div>
     </div>
