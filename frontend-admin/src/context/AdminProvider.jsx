@@ -23,6 +23,16 @@ export default function AdminProvider ({ children }) {
       eviarAdmin(null)
     }
   }, [token])
+  useEffect(() => {
+    if (admin) {
+      const decoded = jwtDecode(token)
+      const currentTime = Date.now() / 1000
+      if (decoded.exp < currentTime) {
+        setAdmin(null)
+        setToken(null)
+      }
+    }
+  }, [])
 
   const value = {
     admin,

@@ -17,17 +17,14 @@ export function LoginFormAdmin () {
   const handleSubmit = e => {
     e.preventDefault()
     setLoading(true)
-    console.log(admin)
 
     loginAdmin(admin)
       .then(res => {
         enviarToken(res.data.token)
         navigate('/products')
-        console.log(res)
         setLoading(false)
       })
       .catch(err => {
-        console.log(err.response.data)
         enviarToken(null)
         setLoading(false)
         setError(err.response.data.error)
@@ -72,7 +69,11 @@ export function LoginFormAdmin () {
           <button
             type='submit'
             disabled={loading}
-            className={loading ? 'px-5 py-3 bg-lime-100 m-4 shadow-sm rounded-md ': 'px-5 py-3 bg-lime-500 m-4 shadow-sm rounded-md '}
+            className={
+              loading
+                ? 'px-5 py-3 bg-lime-100 m-4 shadow-sm rounded-md '
+                : 'px-5 py-3 bg-lime-500 m-4 shadow-sm rounded-md '
+            }
           >
             {loading ? 'Loading...' : 'Login'}
           </button>
