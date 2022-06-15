@@ -230,11 +230,15 @@
 .container__header__menu--button {
   cursor: pointer;
   background-color: transparent;
-  background-image: url('./images/menu.png');
-  background-size: 20px;
-  background-repeat: no-repeat;
-  background-position: center;
+  /* background-image: url('./images/menu.png'); */
+  background-size: 18px;
+  font-size: 13px;
+  font-weight: 800;
+  color: white;
+  /* background-repeat: no-repeat;
+  background-position: center; */
   border: 0;
-  width: 20px;
+  /* border-radius: 30%; */
+  width: 40px;
   height: 20px;
 }
