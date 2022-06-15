@@ -27,7 +27,7 @@ export default function Navbar () {
       </div>
 
       <div
-        className={togle ? 'block md:block h-64 md:h-9 ' : 'hidden md:block'}
+        className={togle ? 'block md:block h-72 md:h-9 ' : 'hidden md:block'}
       >
         <ul className='flex flex-col space-y-6 mt-4 md:mt-0 md:space-y-0 md:flex-row md:space-x-11 md:font-medium md:items-center'>
           <li>
@@ -45,7 +45,7 @@ export default function Navbar () {
           <li className='relative '>
             {admin ? (
               <button
-                className='px-4 py-1 bg-green-500 rounded-sm cursor-pointer '
+                className='px-4 py-1  bg-green-500 rounded-sm cursor-pointer '
                 onClick={() => setState(!state)}
               >
                 {admin.nombre}
@@ -60,9 +60,11 @@ export default function Navbar () {
               </button>
             )}
             {state && (
-              <div className='absolute'>
+              <div
+                className={`absolute  duration-1000 ease-in-out transition-all `}
+              >
                 <button
-                  className='px-4 py-1 mt-3 bg-red-400 rounded-sm cursor-pointer'
+                  className={`px-4 mt-2 py-1 duration-1000 ease-in-out  bg-red-400 rounded-sm cursor-pointer`}
                   onClick={handleLogout}
                 >
                   Salir
