@@ -8,7 +8,7 @@ export function UserProvider ({ children }) {
   const [user, setUser] = useLocalStorage('user', null)
   const [token, setToken] = useLocalStorage('token', null)
 
-  const enviarToken = (newtoken) => {
+  const enviarToken = newtoken => {
     return setToken(newtoken)
   }
 
@@ -21,6 +21,17 @@ export function UserProvider ({ children }) {
       setUser(null)
     }
   }, [token])
+
+  useEffect(() => {
+    if (user) {
+      const decoded = jwtDecode(token)
+      const currentTime = Date.now() / 1000
+      if (decoded.exp < currentTime) {
+        setUser(null)
+        setToken(null)
+      }
+    }
+  }, [])
 
   const value = {
     user,
