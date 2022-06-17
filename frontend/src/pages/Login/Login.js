@@ -1,5 +1,5 @@
 import { useReducer } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import InputError from '../../components/InputError/InputError'
 import InputPassword from '../../components/InputPassword/InputPassword'
 import InputText from '../../components/InputText/InputText'
@@ -12,10 +12,16 @@ export default function Login () {
   const [state, dispatch] = useReducer(signReducer, initialValues)
   const [errors, dispatchErrors] = useReducer(errorsReducer, initialValuesErrors)
   const { login, loading, error } = useUser()
+  const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    login(state)
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault()
+      const logged = await login(state)
+      logged && navigate('/')
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const handleOnBlur = (e) => {

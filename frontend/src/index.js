@@ -6,13 +6,16 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { theme } from './providers/ThemeProvider'
 import { ThemeProvider } from '@mui/material/styles'
+import { UserProvider } from './context/UserProvider'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <App />
+        <UserProvider>
+          <App />
+        </UserProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>

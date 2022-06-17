@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { loginURL, registerURL } from '../configs/URLS'
+import { UserContext } from '../context/UserProvider'
 
 export default function useUser () {
   const [error, setError] = useState({ isError: false, message: '' })
   const [loading, setLoading] = useState(false)
-  const [user, setUser] = useState(null)
+  const { enviarToken, user } = useContext(UserContext)
 
   const login = (dataForm) => {
     setError({ isError: false, message: '' })
@@ -22,19 +23,18 @@ export default function useUser () {
     })
       .then(res => res.json())
       .then(user => {
-        // Dejar hasta que se cambien la respuesta en el backend
-        console.log(user)
-        const messageErrorFromBackend = 'La contraseña no es correcta'
-        if (user.message === messageErrorFromBackend) {
-          return Promise.reject(new Error(messageErrorFromBackend))
+        if (user.error) {
+          return Promise.reject(new Error(user.error))
         }
-        setUser({ token: user.token })
+        enviarToken(user.token)
         setLoading(false)
+        return true
       })
       .catch(error => {
         console.error(error)
         setError({ isError: true, message: error.message || 'Ocurrio un error al iniciar sesión' })
         setLoading(false)
+        return false
       })
   }
 
@@ -52,13 +52,17 @@ export default function useUser () {
     })
       .then(res => res.json())
       .then(userData => {
-        setUser(userData)
+        if (userData.error) {
+          return Promise.reject(new Error(userData.error))
+        }
         setLoading(false)
+        return true
       })
       .catch((err) => {
         console.error(err)
         setError({ isError: true, message: error.message || 'Ocurrio un error al iniciar sesión' })
         setLoading(false)
+        return false
       })
   }
 

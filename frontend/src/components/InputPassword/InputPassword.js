@@ -2,7 +2,14 @@ export default function InputPassword ({ inputName, labelName, onChange, value, 
   return (
     <label className='form-label'>
       <span>{labelName}</span>
-      <input type='password' name={inputName} autoComplete='new-text' className='form-input' onChange={onChange} value={value} onBlur={onBlur} />
+      <input
+        type='password'
+        name={inputName}
+        autoCorrect='off'
+        autoComplete='new-text' className='form-input'
+        onChange={onChange}
+        value={value} onBlur={onBlur}
+      />
     </label>
   )
 }

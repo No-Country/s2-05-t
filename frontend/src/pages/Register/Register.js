@@ -1,5 +1,5 @@
 import { useReducer } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Register.css'
 import signReducer, { initialValues } from '../../reducers/signReducer.js'
 import useUser from '../../hooks/useUser'
@@ -12,14 +12,20 @@ export default function Register () {
   const [state, dispatch] = useReducer(signReducer, initialValues)
   const [errors, dispatchErrors] = useReducer(errorsReducer, initialValuesErrors)
   const { register, loading, error } = useUser()
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     dispatch({ name: e.target.name, value: e.target.value })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    register(state)
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault()
+      const signuped = await register(state)
+      signuped && navigate('/login')
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const onBlur = (e) => {

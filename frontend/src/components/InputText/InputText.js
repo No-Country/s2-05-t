@@ -2,7 +2,16 @@ export default function InputText ({ inputName, labelName, onChange, value, onBl
   return (
     <label className='form-label'>
       <span>{labelName}</span>
-      <input type='text' name={inputName} autoComplete='new-text' className='form-input' onChange={onChange} value={value} onBlur={onBlur} />
+      <input
+        type='text'
+        name={inputName}
+        autoComplete='new-text'
+        autoCorrect='off'
+        className='form-input'
+        onChange={onChange}
+        value={value}
+        onBlur={onBlur}
+      />
     </label>
   )
 }
