@@ -7,9 +7,8 @@ import Navbar from './components/Navbar/Navbar'
 import Carrito from './pages/Carrito/Carrito'
 import SearchResults from './pages/SearchResults/SearchResults'
 import Profile from './pages/Profile/Profile'
-import Burgers from './pages/Burgers/Burgers'
 
-function App() {
+function App () {
   const { pathname } = useLocation()
 
   return (
@@ -22,7 +21,6 @@ function App() {
         <Route path='/cart' element={<Carrito />} />
         <Route path='/search/:searched' element={<SearchResults />} />
         <Route path='/profile' element={<Profile />} />
-        <Route path='/Hamburguesas' element={<Burgers />} />
       </Routes>
     </div>
   )

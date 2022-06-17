@@ -6,7 +6,7 @@ export default function useUser () {
   const [loading, setLoading] = useState(false)
   const [user, setUser] = useState(null)
 
-  const login = dataForm => {
+  const login = (dataForm) => {
     setError({ isError: false, message: '' })
     setLoading(true)
     const body = JSON.stringify({
@@ -33,15 +33,12 @@ export default function useUser () {
       })
       .catch(error => {
         console.error(error)
-        setError({
-          isError: true,
-          message: error.message || 'Ocurrio un error al iniciar sesión'
-        })
+        setError({ isError: true, message: error.message || 'Ocurrio un error al iniciar sesión' })
         setLoading(false)
       })
   }
 
-  const register = dataForm => {
+  const register = (dataForm) => {
     setError({ isError: false, message: '' })
     setLoading(true)
     delete dataForm.passwordRepeated
@@ -58,12 +55,9 @@ export default function useUser () {
         setUser(userData)
         setLoading(false)
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err)
-        setError({
-          isError: true,
-          message: error.message || 'Ocurrio un error al iniciar sesión'
-        })
+        setError({ isError: true, message: error.message || 'Ocurrio un error al iniciar sesión' })
         setLoading(false)
       })
   }
