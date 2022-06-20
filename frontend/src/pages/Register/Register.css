@@ -1,0 +1,30 @@
+.Signup{
+  background-color: var(--main-color);
+  height: 1fr;
+  color: white;
+  padding: 1em 1em;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.Signup-title{
+  font-size: var(--title-font-size);
+  margin-top: 0;
+}
+
+.Signup-form_title {
+  font-size: 20px;
+  text-align: left;
+}
+
+.Signup-form_link{
+  color: white;
+  font-size: bold;
+}
+.Signup-form_link:visited{
+  color: white;
+}
+
+.Signup-form > button:hover {
+  background-color: var(--third-color-little-dark);
+}
