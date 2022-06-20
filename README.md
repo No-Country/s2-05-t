@@ -27,6 +27,9 @@ Tambien cuenta con una pagina de [Administrador](https://admin-food.vercel.app/)
 ## Contributing
 > [Eliseo Edu](https://github.com/Eliseonop)
 
+> [Enzo]()
+
+> [Mauricio]()
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
